@@ -11,7 +11,7 @@ type Guest struct {
 	NewEvents []string
 }
 
-var myNewEvents = []string{"Minon Day", "Minion Movie Premier", "Gru's Brhday"}
+var myNewEvents = []string{"Minion Day", "Minion Movie Premier", "Gru's Birthday"}
 var myGuests = []Guest{
 	{"Mr.", "Gru", false, false, myNewEvents},
 	{"Dr.", "Kevin", true, true, myNewEvents},
@@ -22,10 +22,10 @@ var myGuests = []Guest{
 
 func main() {
 	myGuetsTemp, err := template.New("LetterTemp").Parse("Dear {{.Honorific}} {{.Name}}:" +
-		" \n{{if (.DidAttend) }}Thank you very much for attending our fund-raising event.{{if (.Donate) }}" +
-		"  Your donation is greatly appreciated.{{else}}  Please consider a small monetary donation if you appreciated our event. " +
-		" {{end}}{{else}}We are sorry that you could not make it to our event.{{end}} " +
-		" Let get together for upcoming events:{{range $element  := .NewEvents}} {{$element}},{{end}} .\n" +
+		" \n{{if (.DidAttend) }}Thank you for attending our event.{{if (.Donate) }}" +
+		"  Your donation is much appreciated." +
+		" {{end}}{{else}}You were missed at the event.{{end}} " +
+		" Lets get together for upcoming events:{{range $element  := .NewEvents}} {{$element}},{{end}} .\n" +
 		" BestWishes,\n Harleen \n\n")
 	if err != nil {
 		panic(err)
